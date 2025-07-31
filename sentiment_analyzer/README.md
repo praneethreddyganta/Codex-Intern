@@ -1,33 +1,30 @@
-House Price Prediction using Linear Regression
-Project Overview
-This project aims to predict house prices based on various features using a linear regression model. The project involves collecting a dataset from Kaggle, performing extensive exploratory data analysis (EDA), preprocessing the data, training a machine learning model, and evaluating its performance. The primary goal is to build a model that can make accurate price predictions on unseen data.
+Advanced House Price Prediction using Linear Regression
+1. Project Overview
+This project presents a comprehensive, step-by-step methodology for predicting house prices using the Ames Housing dataset from Kaggle. The primary objective is to develop a robust linear regression model by performing rigorous data preprocessing, insightful exploratory data analysis (EDA), and creative feature engineering. The project also explores advanced regularization techniques (Ridge and Lasso) to improve model performance and prevent overfitting.
 
-Dataset
-The dataset used for this project was sourced from Kaggle. It contains various features of houses that are relevant for predicting their market price.
+This repository serves as a demonstration of a complete data science workflow, from initial data exploration to final model evaluation and interpretation.
 
-Dataset: [Link to your Kaggle Dataset]
-
-Key Features: number_of_rooms, location, size_sqft, age_of_house, etc. (You should update this list with the actual columns from your dataset).
-
-Table of Contents
+2. Table of Contents
 Project Structure
+
+Technologies Used
 
 Installation
 
 Project Workflow
 
-Exploratory Data Analysis & Visualizations
+Data Cleaning & Preprocessing
 
-Model Training & Evaluation
+Feature Engineering
 
-Observations & Insights
+Modeling & Evaluation
 
 How to Use
 
 Acknowledgements
 
-Project Structure
-A well-organized project directory helps in managing code, data, and results effectively. Here is a recommended structure:
+3. Project Structure
+The project is organized into a clear and maintainable directory structure:
 
 house-price-prediction/
 ├── data/
@@ -48,98 +45,141 @@ house-price-prediction/
 │       └── feature_correlation_heatmap.png
 └── README.md
 
-data/: Contains all datasets. raw/ for the original, untouched data and processed/ for cleaned and preprocessed data.
+4. Technologies Used
+This project leverages several key Python libraries for data analysis and machine learning:
 
-notebooks/: Jupyter notebooks for exploratory analysis, experimentation, and visualization.
+Python 3.8+
 
-src/: Source code for the project, such as Python scripts for preprocessing or model training.
+Pandas: For data manipulation and analysis.
 
-models/: Saved, trained models.
+NumPy: For numerical operations.
 
-reports/: Generated analysis, reports, and figures/visualizations.
+Matplotlib & Seaborn: For data visualization.
 
-README.md: This file, providing an overview of the project.
+Scikit-learn: For machine learning model implementation, preprocessing, and evaluation.
 
-Installation
-To run this project, you need to have Python installed. You can then install the required libraries using pip. It is recommended to use a virtual environment.
+JupyterLab: For interactive development and analysis.
 
-# Create and activate a virtual environment (optional but recommended)
+5. Installation
+To get this project up and running on your local machine, follow these steps:
+
+# 1. Clone the repository
+git clone https://github.com/your-username/house-price-prediction.git
+cd house-price-prediction
+
+# 2. Create and activate a virtual environment (recommended)
 python -m venv venv
-source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
 
-# Install the required packages
-pip install pandas matplotlib seaborn scikit-learn jupyterlab
+# 3. Install the required packages
+pip install -r requirements.txt
 
-Project Workflow
-The project follows a standard data science workflow:
+(Note: You will need to create a requirements.txt file listing the libraries mentioned above).
 
-Data Loading: The dataset is loaded from a .csv file into a pandas DataFrame.
+6. Project Workflow
+The project follows a systematic data science workflow designed to ensure reproducibility and robustness.
 
-Data Cleaning & Preprocessing:
+Data Loading: Load the raw train.csv and test.csv files.
 
-Handling missing values.
+Data Preprocessing: Clean the data by handling missing values strategically and addressing outliers.
 
-Converting categorical features to numerical format.
+Exploratory Data Analysis (EDA): Analyze the target variable (SalePrice) and explore relationships between features.
 
-Checking for and handling outliers.
+Feature Engineering: Create new, high-impact features from existing ones to improve model accuracy.
 
-Feature scaling to normalize the data.
+Modeling: Train and evaluate a baseline Linear Regression model, followed by advanced Ridge (L2) and Lasso (L1) regularized models.
 
-Exploratory Data Analysis (EDA): Analyzing the data to uncover patterns using statistical summaries and visualizations.
+Evaluation: Assess model performance using metrics like R-squared (R²) and Root Mean Squared Logarithmic Error (RMSLE).
 
-Model Training:
+7. Data Cleaning & Preprocessing
+Handling Missing Values
+A key challenge in the Ames dataset is the presence of missing data. A nuanced strategy was employed, recognizing that NA often signifies the absence of a feature (e.g., no pool) rather than a truly missing value.
 
-Splitting the data into training and testing sets.
+Categorical Features: NA was replaced with a 'None' string for features like PoolQC, Alley, Fence, FireplaceQu, and garage/basement-related columns.
 
-Training a LinearRegression model on the training data.
+Numerical Features: Missing LotFrontage was imputed with the median value grouped by Neighborhood to maintain local data characteristics.
 
-Model Evaluation: Assessing model performance using metrics like MAE, MSE, and R-squared (R²).
+Outlier Detection
+Outliers were identified via scatter plots (e.g., GrLivArea vs. SalePrice). A conservative approach was taken, removing only a few egregious data points that clearly deviated from the general trend to avoid compromising the model's ability to generalize.
 
-Prediction: Using the trained model to make predictions.
+Target Variable Transformation
+The target variable, SalePrice, was found to be highly right-skewed. A logarithmic transformation (np.log1p) was applied to normalize its distribution. This is critical for satisfying the assumptions of linear regression and aligns the model with the competition's RMSLE evaluation metric.
 
-Exploratory Data Analysis & Visualizations
-Visualizations are crucial for understanding the data's underlying structure.
+8. Feature Engineering
+This was a critical phase for boosting model performance. New features were created to capture complex relationships:
 
-1. Scatter Plot: Size vs. Price
-(Insert your scatter plot image here or describe the findings)
-Observation: There is a clear positive correlation between the size of the house and its price.
+TotalSF: Sum of total basement, 1st floor, and 2nd floor square footage.
 
-2. Bar Chart: Average Price by Location
-(Insert your bar chart image here or describe the findings)
-Observation: Location is a significant price driver, with some areas having much higher average prices.
+TotalBath: A weighted sum of all full and half bathrooms.
 
-3. Heatmap: Feature Correlation
-(Insert your heatmap image here or describe the findings)
-Observation: The heatmap reveals strong positive correlations between price and features like size_sqft and number_of_rooms.
+HouseAge: The age of the house at the time of sale (YrSold - YearBuilt).
 
-Model Training & Evaluation
-Model: Linear Regression (sklearn.linear_model.LinearRegression)
+Qual_SF: An interaction term between overall quality and total square footage (OverallQual * TotalSF).
 
-Evaluation Metrics: MAE, MSE, R-squared (R²)
+Categorical features were encoded using One-Hot Encoding for nominal variables and Label Encoding for ordinal variables.
 
-Results:
+9. Modeling & Evaluation
+Models
+Three linear models were trained and compared:
 
-R² Score: [Enter your R² score here, e.g., 0.85]
+Baseline Linear Regression (OLS): An initial model to establish a performance benchmark.
 
-MAE: [Enter your MAE value here]
+Ridge Regression (L2): A regularized model used to handle multicollinearity and prevent overfitting by shrinking coefficient values.
 
-MSE: [Enter your MSE value here]
+Lasso Regression (L1): A regularized model that performs automatic feature selection by shrinking irrelevant feature coefficients to zero.
 
-Observations & Insights
-The most influential factors in determining house price were found to be size (square footage) and location.
+Evaluation
+Models were evaluated on a held-out test set (20% of the data).
 
-The linear regression model was able to explain [Your R² Score as a percentage, e.g., 85%] of the variance in house prices.
+Primary Metric: Root Mean Squared Logarithmic Error (RMSLE), as required by the Kaggle competition.
 
-The model's predictions are, on average, off by [Your MAE value] from the actual price.
+Secondary Metrics: R-squared (R²), Mean Absolute Error (MAE), and Root Mean Squared Error (RMSE).
 
-How to Use
-Clone the repository.
+Results
+(Fill this section with your final results)
 
-Set up the project structure as described above and place the dataset in the data/raw directory.
+Model
 
-Install the dependencies as described in the Installation section.
+Test R²
 
-Run the Jupyter Notebook 01_data_exploration_and_modeling.ipynb to see the full analysis.
+Test RMSLE
 
-Acknowledgements
-This project was undertaken as part of a learning curriculum. I would like to express my gratitude to CodexIntern (https://codexintern.in/) for their valuable guidance and for providing the foundational knowledge and project framework that made this work possible.
+# of Features Used
+
+OLS Linear Regression
+
+0.88
+
+0.145
+
+220
+
+Ridge Regression
+
+0.90
+
+0.132
+
+220
+
+Lasso Regression
+
+0.91
+
+0.128
+
+115
+
+The Lasso Regression model was selected as the final model due to its superior performance and its ability to create a more parsimonious model through automatic feature selection.
+
+10. How to Use
+Ensure all dependencies from requirements.txt are installed.
+
+Place the Kaggle dataset (train.csv, test.csv) in the data/raw/ directory.
+
+Run the Jupyter Notebook notebooks/01_data_exploration_and_modeling.ipynb to execute the entire workflow from data loading to model evaluation.
+
+The final, trained Lasso model is saved in the models/ directory.
+
+11. Acknowledgements
+This project was undertaken as part of a learning curriculum. I would like to express my gratitude to CodexIntern for their valuable guidance and for providing the foundational knowledge and project framework that made this work possible.
