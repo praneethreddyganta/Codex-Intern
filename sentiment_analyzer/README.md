@@ -21,21 +21,21 @@ This repository serves as a demonstration of a complete data science workflow, f
 ## 3. Project Structure
 house-price-prediction/
 ├── data/
-│ ├── raw/
-│ │ └── house-prices.csv
-│ └── processed/
-│ └── cleaned_data.csv
+│   ├── raw/
+│   │   └── house-prices.csv
+│   └── processed/
+│       └── cleaned_data.csv
 ├── notebooks/
-│ └── 01_data_exploration_and_modeling.ipynb
+│   └── 01_data_exploration_and_modeling.ipynb
 ├── src/
-│ ├── data_preprocessing.py
-│ └── model_training.py
+│   ├── data_preprocessing.py
+│   └── model_training.py
 ├── models/
-│ └── linear_regression_model.pkl
+│   └── linear_regression_model.pkl
 ├── reports/
-│ └── figures/
-│ ├── price_vs_size_scatterplot.png
-│ └── feature_correlation_heatmap.png
+│   └── figures/
+│       ├── price_vs_size_scatterplot.png
+│       └── feature_correlation_heatmap.png
 └── README.md
 
 - `data/`: Contains datasets. `raw/` for original, untouched data; `processed/` for cleaned/preprocessed data.
