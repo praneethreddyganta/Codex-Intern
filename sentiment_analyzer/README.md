@@ -25,6 +25,30 @@ This repository serves as a demonstration of a complete data science workflow, f
 - `src/`: Source code for data processing and modeling.
 - `models/`: Saved, trained model files.
 - `reports/`: Generated figures and analysis.
+## 3. Project Structure
+house-price-prediction/
+│
+├── data/
+│ ├── raw/ # Original train.csv and test.csv
+│ └── processed/ # Cleaned and preprocessed datasets
+│
+├── notebooks/
+│ └── 01_data_exploration_and_modeling.ipynb # Main analysis notebook
+│
+├── src/
+│ ├── data_preprocessing.py # Preprocessing functions
+│ ├── feature_engineering.py # Feature creation scripts
+│ └── model_training.py # Model training and evaluation
+│
+├── models/
+│ └── lasso_model.pkl # Final trained model
+│
+├── reports/
+│ ├── figures/ # EDA and result visualizations
+│ └── summary.md # Summary of findings
+│
+├── requirements.txt
+└── README.md
 
 ## 3. Technologies Used
 
