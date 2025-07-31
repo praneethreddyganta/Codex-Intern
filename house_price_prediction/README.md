@@ -18,17 +18,14 @@ Build a machine learning model to predict the price of houses using regression t
 
 ## 📁 Project Structure
 
-```
-Project1/
-├── data/                  # Raw and cleaned dataset
-│   └── housing.csv
-├── notebooks/             # Jupyter notebooks for EDA and model training
-│   ├── EDA.ipynb
-│   └── LinearRegressionModel.ipynb
-├── models/                # Saved model files
-├── README.md              # Project overview and instructions
-└── requirements.txt       # Python dependencies
-```
+house_price_prediction/
+├── __pycache__/                        # Compiled Python files
+│   └── preprocessing.cpython-311.pyc
+├── README.md                          # Project overview and instructions
+├── model_training.py                  # Script for model training
+├── preprocessing.py                   # Script for data preprocessing
+├── test.csv                           # Testing dataset
+└── train.csv                          # Training dataset
 
 ---
 
