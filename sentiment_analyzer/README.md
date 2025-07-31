@@ -13,10 +13,6 @@ This web application allows users to enter text and receive a sentiment classifi
 
 ---
 
-## Demo
-
-_A screenshot or GIF here (optional)_
-
 ---
 
 ## Technologies Used
