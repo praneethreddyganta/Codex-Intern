@@ -18,25 +18,7 @@ This repository serves as a demonstration of a complete data science workflow, f
 - [How to Use](#how-to-use)
 - [Acknowledgements](#acknowledgements)
 
-## 3. Project Structure
-house-price-prediction/
-├── data/
-│   ├── raw/
-│   │   └── house-prices.csv
-│   └── processed/
-│       └── cleaned_data.csv
-├── notebooks/
-│   └── 01_data_exploration_and_modeling.ipynb
-├── src/
-│   ├── data_preprocessing.py
-│   └── model_training.py
-├── models/
-│   └── linear_regression_model.pkl
-├── reports/
-│   └── figures/
-│       ├── price_vs_size_scatterplot.png
-│       └── feature_correlation_heatmap.png
-└── README.md
+
 
 - `data/`: Contains datasets. `raw/` for original, untouched data; `processed/` for cleaned/preprocessed data.
 - `notebooks/`: Jupyter Notebooks for exploration and analysis.
@@ -44,7 +26,7 @@ house-price-prediction/
 - `models/`: Saved, trained model files.
 - `reports/`: Generated figures and analysis.
 
-## 4. Technologies Used
+## 3. Technologies Used
 
 - Python 3.8+
 - Pandas
@@ -53,7 +35,7 @@ house-price-prediction/
 - Scikit-learn
 - JupyterLab
 
-## 5. Installation
+## 4. Installation
 1. Clone the repository
 git clone https://github.com/your-username/house-price-prediction.git
 cd house-price-prediction
@@ -67,7 +49,7 @@ pip install -r requirements.txt
 
 > **Note:** You need a `requirements.txt` listing all mentioned libraries.
 
-## 6. Project Workflow
+## 5. Project Workflow
 
 1. **Data Loading**: Load raw `train.csv` and `test.csv` files.
 2. **Data Preprocessing**: Clean data and handle missing values/outliers.
@@ -79,7 +61,7 @@ pip install -r requirements.txt
     - Lasso Regression (L1, automatic feature selection)
 6. **Evaluation**: Metrics include RMSLE, R², MAE, and RMSE.
 
-## 7. Data Cleaning & Preprocessing
+## 6. Data Cleaning & Preprocessing
 
 - **Missing Values**:
     - Categorical: Replace `NA` with `'None'` for features like `PoolQC`, `Alley`, `Fence`, and garage/basement columns.
@@ -87,7 +69,7 @@ pip install -r requirements.txt
 - **Outlier Detection**: Remove extreme outliers (e.g., from `GrLivArea` vs. `SalePrice` plots).
 - **Target Transformation**: Apply `np.log1p(SalePrice)` to reduce right skew.
 
-## 8. Feature Engineering
+## 7. Feature Engineering
 
 - **TotalSF**: Total basement, 1st, and 2nd floor square footage.
 - **TotalBath**: Weighted sum of all bathrooms.
@@ -95,7 +77,7 @@ pip install -r requirements.txt
 - **Qual_SF**: `OverallQual` x `TotalSF`
 - **Encoding**: One-Hot for nominal features; Label Encoding for ordinal.
 
-## 9. Modeling & Evaluation
+## 8. Modeling & Evaluation
 
 | Model                  | Test R² | Test RMSLE | Features Used |
 |------------------------|---------|------------|--------------|
@@ -105,14 +87,14 @@ pip install -r requirements.txt
 
 - **Final Model:** Lasso Regression (best score, automatic feature selection).
 
-## 10. How to Use
+## 9. How to Use
 
 1. Install dependencies from `requirements.txt`.
 2. Put `train.csv` and `test.csv` in `data/raw/`.
 3. Run `notebooks/01_data_exploration_and_modeling.ipynb` for the full pipeline.
 4. The trained model (`lasso`) is saved in `models/`.
 
-## 11. Acknowledgements
+## 10. Acknowledgements
 
 This project was undertaken as part of a learning curriculum. Special thanks to CodexIntern for their guidance and for providing the foundational knowledge and project framework.
 
