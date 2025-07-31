@@ -12,6 +12,20 @@ This web application allows users to enter text and receive a sentiment classifi
 - Built with [TextBlob](https://textblob.readthedocs.io/en/dev/) for robust NLP
 
 ---
+sentiment-analysis-app/
+│
+├── app/ or project/ # Flask app or Django project folder
+│ ├── templates/ # HTML templates
+│ │ └── index.html # Main input/output UI page
+│ ├── static/ # CSS and JS files (optional)
+│ ├── app.py # Flask app entry point (if Flask)
+│ ├── views.py # Django views (if Django)
+│ └── urls.py # Django URLs (if Django)
+│
+├── requirements.txt # Python dependencies
+├── README.md # Project documentation
+└── manage.py # Django only (not needed for Flask)
+
 
 ## Technologies Used
 
