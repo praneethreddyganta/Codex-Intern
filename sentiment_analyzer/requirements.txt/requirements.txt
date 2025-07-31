@@ -1,0 +1,5 @@
+# requirements.txt
+
+Flask==3.0.3
+textblob==0.18.0.post0
+python app.py

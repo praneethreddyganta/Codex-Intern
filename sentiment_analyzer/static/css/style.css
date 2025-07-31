@@ -1,0 +1,131 @@
+/* static/css/style.css */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+}
+
+header h1 {
+    color: #1a73e8;
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+header p {
+    color: #5f6368;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+textarea {
+    width: 100%;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+    resize: vertical;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+}
+
+button {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #1558b3;
+}
+
+#results {
+    margin-top: 40px;
+}
+
+#results h2 {
+    color: #3c4043;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+.result-card {
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.result-card h3 {
+    margin-top: 0;
+    color: #3c4043;
+    font-size: 1.2rem;
+}
+
+.scores {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.sentiment-text {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+.score {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a73e8;
+    margin: 10px 0;
+}
+
+.result-card small {
+    color: #5f6368;
+}
+
+/* Sentiment-specific colors */
+.sentiment-positive .sentiment-text { color: #34a853; }
+.sentiment-negative .sentiment-text { color: #ea4335; }
+.sentiment-neutral .sentiment-text { color: #fbbc05; }
+
+.sentiment-positive { border-left: 5px solid #34a853; }
+.sentiment-negative { border-left: 5px solid #ea4335; }
+.sentiment-neutral { border-left: 5px solid #fbbc05; }
+
+footer {
+    margin-top: 40px;
+    color: #888;
+    font-size: 0.9rem;
+}

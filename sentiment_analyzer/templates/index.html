@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analyzer 🧐</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Sentiment Analysis Engine</h1>
+            <p>Enter any text below to determine its emotional tone.</p>
+        </header>
+
+        <main>
+            <form action="/" method="post">
+                <textarea name="text" placeholder="Start typing here..." rows="6">{{ text or '' }}</textarea>
+                <button type="submit">Analyze Sentiment</button>
+            </form>
+
+            {% if sentiment %}
+            <div id="results">
+                <h2>Analysis Results</h2>
+                <div class="result-card sentiment-{{ sentiment.lower() }}">
+                    <h3>Overall Sentiment</h3>
+                    <p class="sentiment-text">{{ sentiment }}</p>
+                </div>
+                <div class="scores">
+                    <div class="result-card">
+                        <h3>Polarity Score</h3>
+                        <p class="score">{{ polarity }}</p>
+                        <small>Ranges from -1 (Negative) to +1 (Positive)</small>
+                    </div>
+                    <div class="result-card">
+                        <h3>Subjectivity Score</h3>
+                        <p class="score">{{ subjectivity }}</p>
+                        <small>Ranges from 0 (Objective) to 1 (Subjective)</small>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 Sentiment Analyzer.</p>
+        </footer>
+    </div>
+</body>
+</html>
