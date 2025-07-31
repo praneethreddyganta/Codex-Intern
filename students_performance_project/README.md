@@ -111,6 +111,8 @@ plt.savefig("visuals/heatmap.png")
 
 - Dataset sourced from Kaggle’s [Students Performance in Exams Dataset](https://www.kaggle.com/spscientist/students-performance-in-exams)
 - Visualization support from [Matplotlib](https://matplotlib.org/) and [Seaborn](https://seaborn.pydata.org/)
+- Special Thanks to **[CodeXIntern](https://codexintern.in/)** for providing the internship opportunity and project guidance.
+
 
 ---
 
