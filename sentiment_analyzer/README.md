@@ -1,124 +1,101 @@
-# Advanced House Price Prediction using Linear Regression
+# Sentiment Analysis Web Application
 
-## 1. Project Overview
+This web application allows users to enter text and receive a sentiment classification (**Positive**, **Negative**, or **Neutral**) along with detailed polarity and subjectivity scores. Built with Python using Flask (or Django) and powered by the TextBlob library.
 
-This project presents a comprehensive, step-by-step methodology for predicting house prices using the Ames Housing dataset from Kaggle. The primary objective is to develop a robust linear regression model through rigorous data preprocessing, insightful exploratory data analysis (EDA), and creative feature engineering. The project also explores advanced regularization techniques (Ridge and Lasso) to improve model performance and prevent overfitting.
+---
 
-This repository serves as a demonstration of a complete data science workflow, from initial data exploration to final model evaluation and interpretation.
+## Features
 
-## 2. Table of Contents
+- Simple web interface for user text input
+- Instant sentiment classification: **Positive**, **Negative**, or **Neutral**
+- Displays both **polarity** and **subjectivity** scores for each input
+- Built with [TextBlob](https://textblob.readthedocs.io/en/dev/) for robust NLP
 
-- [Project Structure](#project-structure)
-- [Technologies Used](#technologies-used)
-- [Installation](#installation)
-- [Project Workflow](#project-workflow)
-- [Data Cleaning & Preprocessing](#data-cleaning--preprocessing)
-- [Feature Engineering](#feature-engineering)
-- [Modeling & Evaluation](#modeling--evaluation)
-- [How to Use](#how-to-use)
-- [Acknowledgements](#acknowledgements)
+---
 
+## Demo
 
+_A screenshot or GIF here (optional)_
 
-- `data/`: Contains datasets. `raw/` for original, untouched data; `processed/` for cleaned/preprocessed data.
-- `notebooks/`: Jupyter Notebooks for exploration and analysis.
-- `src/`: Source code for data processing and modeling.
-- `models/`: Saved, trained model files.
-- `reports/`: Generated figures and analysis.
-## 3. Project Structure
-house-price-prediction/
-│
-├── data/
-│ ├── raw/ # Original train.csv and test.csv
-│ └── processed/ # Cleaned and preprocessed datasets
-│
-├── notebooks/
-│ └── 01_data_exploration_and_modeling.ipynb # Main analysis notebook
-│
-├── src/
-│ ├── data_preprocessing.py # Preprocessing functions
-│ ├── feature_engineering.py # Feature creation scripts
-│ └── model_training.py # Model training and evaluation
-│
-├── models/
-│ └── lasso_model.pkl # Final trained model
-│
-├── reports/
-│ ├── figures/ # EDA and result visualizations
-│ └── summary.md # Summary of findings
-│
-├── requirements.txt
-└── README.md
+---
 
-## 3. Technologies Used
+## Technologies Used
 
 - Python 3.8+
-- Pandas
-- NumPy
-- Matplotlib & Seaborn
-- Scikit-learn
-- JupyterLab
+- Flask (or Django)
+- TextBlob
+- HTML/CSS (Templates)
+- Bootstrap (optional, for styling)
 
-## 4. Installation
-1. Clone the repository
-git clone https://github.com/your-username/house-price-prediction.git
-cd house-price-prediction
+---
 
-2. Create and activate a virtual environment (recommended)
-python -m venv venv
-source venv/bin/activate # On Windows: venv\Scripts\activate
+## Installation
 
-3. Install required packages
-pip install -r requirements.txt
+1. **Clone the repository:**
+    ```
+    git clone https://github.com/your-username/sentiment-analysis-app.git
+    cd sentiment-analysis-app
+    ```
 
-> **Note:** You need a `requirements.txt` listing all mentioned libraries.
+2. **Create a virtual environment and activate it:**
+    ```
+    python -m venv venv
+    source venv/bin/activate        # On Windows: venv\Scripts\activate
+    ```
 
-## 5. Project Workflow
+3. **Install the dependencies:**
+    ```
+    pip install -r requirements.txt
+    ```
 
-1. **Data Loading**: Load raw `train.csv` and `test.csv` files.
-2. **Data Preprocessing**: Clean data and handle missing values/outliers.
-3. **EDA**: Analyze target (`SalePrice`) and relationships.
-4. **Feature Engineering**: Create features to improve model accuracy.
-5. **Modeling**: Train and evaluate:
-    - Baseline Linear Regression
-    - Ridge Regression (L2)
-    - Lasso Regression (L1, automatic feature selection)
-6. **Evaluation**: Metrics include RMSLE, R², MAE, and RMSE.
+4. **Run the web application:**
+    ```
+    # If using Flask:
+    flask run
 
-## 6. Data Cleaning & Preprocessing
+    # If using Django:
+    python manage.py runserver
+    ```
 
-- **Missing Values**:
-    - Categorical: Replace `NA` with `'None'` for features like `PoolQC`, `Alley`, `Fence`, and garage/basement columns.
-    - Numerical: Impute `LotFrontage` by median, grouped by `Neighborhood`.
-- **Outlier Detection**: Remove extreme outliers (e.g., from `GrLivArea` vs. `SalePrice` plots).
-- **Target Transformation**: Apply `np.log1p(SalePrice)` to reduce right skew.
+---
 
-## 7. Feature Engineering
+## Usage
 
-- **TotalSF**: Total basement, 1st, and 2nd floor square footage.
-- **TotalBath**: Weighted sum of all bathrooms.
-- **HouseAge**: `YrSold - YearBuilt`
-- **Qual_SF**: `OverallQual` x `TotalSF`
-- **Encoding**: One-Hot for nominal features; Label Encoding for ordinal.
+- Open your browser and navigate to `http://127.0.0.1:5000/` (Flask) or `http://127.0.0.1:8000/` (Django).
+- Enter or paste your text in the input field.
+- Submit to see the sentiment result, polarity, and subjectivity scores displayed on the page.
 
-## 8. Modeling & Evaluation
+---
 
-| Model                  | Test R² | Test RMSLE | Features Used |
-|------------------------|---------|------------|--------------|
-| OLS Linear Regression  | 0.88    | 0.145      | 220          |
-| Ridge Regression       | 0.90    | 0.132      | 220          |
-| Lasso Regression       | 0.91    | 0.128      | 115          |
+## Example Output
 
-- **Final Model:** Lasso Regression (best score, automatic feature selection).
+- **Input:**  
+    `I love this product! It works perfectly.`
 
-## 9. How to Use
+- **Output:**  
+    - **Sentiment:** Positive
+    - **Polarity:** 0.625
+    - **Subjectivity:** 0.6
 
-1. Install dependencies from `requirements.txt`.
-2. Put `train.csv` and `test.csv` in `data/raw/`.
-3. Run `notebooks/01_data_exploration_and_modeling.ipynb` for the full pipeline.
-4. The trained model (`lasso`) is saved in `models/`.
+---
 
-## 10. Acknowledgements
 
-This project was undertaken as part of a learning curriculum. Special thanks to CodexIntern for their guidance and for providing the foundational knowledge and project framework.
+---
+
+## requirements.txt Example
+*or for Django:*
+
+Remember to also download TextBlob corpora:
+
+---
+
+## Acknowledgements
+
+- Built with [Flask](https://flask.palletsprojects.com/) / [Django](https://www.djangoproject.com/)
+- Sentiment analysis by [TextBlob](https://textblob.readthedocs.io/)
+
+---
+
+
+
 
