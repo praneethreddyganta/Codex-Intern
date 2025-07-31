@@ -90,7 +90,7 @@ The dataset used for this project is sourced from **Kaggle**:
 
 ## 🙏 Acknowledgements
 
-This project was completed as part of my **internship at [Codec Intern](https://internship.codeclause.com/)**.  
+This project was completed as part of my **internship at [Codex Intern](https://internship.codeclause.com/)**.  
 Thanks to the team for their guidance and support throughout the program.
 
 ---
